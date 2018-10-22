@@ -1,7 +1,14 @@
 /* GET 'home' page */
 const homelist = function(req, res){
-    res.render('locations-list', { title: 'Home' });
+    res.render('locations-list', {
+        title: 'Bank of Godley',
+        pageHeader: {
+            title: 'Bank of Godley',
+            strapline: 'Your Faithful And Friendly Financial Partner'
+        }
+    });
 };
+
 
 /* GET 'Location info' page */
 const locationInfo = function(req, res){
