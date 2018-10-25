@@ -8,7 +8,7 @@ const locationSchema = new mongoose.Schema({
     closing: String,
 });
 
-mongoose.model('Location', locationSchema);
+mongoose.model(Location, locationSchema);
 
 const withdrawSchema = new mongoose.Schema({
         withdrawAmount: {type: float, required: true}
