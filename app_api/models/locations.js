@@ -1,34 +1,43 @@
 const mongoose = require('mongoose');
 
-const locationSchema = new mongoose.Schema({
-    name: {type: String, required: true},
-    address: String,
-    coords: {type: [Number], index: '2dsphere'},
-    opening: String,
-    closing: String,
+const openingTimeSchema = new mongoose.Schema({
+  days: {
+    type: String,
+    required: true
+  },
+  opening: String,
+  closing: String,
+  closed: {
+    type: Boolean,
+    required: true
+  }
 });
 
-mongoose.model(Location, locationSchema);
-
-const withdrawSchema = new mongoose.Schema({
-        withdrawAmount: {type: float, required: true}
-        },
-);
-
-mongoose.model('Withdraw', withdrawSchema);
-
-const depositSchema = new mongoose.Schema({
-        depositAmount: {type: float, required: true}
-    },
-);
-
-mongoose.model('Deposit', depositSchema);
-
 const balanceSchema = new mongoose.Schema({
-        balanceAmount: {type: float}
-    },
-);
+        balanceAmount: {
+          type: double = 0
+        }
+    });
 
-mongoose.model('Balance', balanceSchema);
+const locationSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  address: String,
+  rating: {
+    type: Number,
+    'default': 0,
+    min: 0,
+    max: 5
+  },
+  facilities: [String],
+  coords: {
+    type: [Number],
+    index: '2dsphere'
+  },
+  openingTimes: [openingTimeSchema],
+  reviews: [balanceSchema]
+});
 
-require('./locations');
+mongoose.model('Location', locationSchema);

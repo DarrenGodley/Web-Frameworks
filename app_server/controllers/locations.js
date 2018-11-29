@@ -1,25 +1,34 @@
-/* GET 'home' page */
-const homelist = function(req, res){
+const request = require('request');
+
+const _renderHomepage = function(req, res){
     res.render('locations-list', {
         title: 'Bank of Godley - Your Faithful And Friendly Financial Partner',
         pageHeader: {
             title: 'Bank of Godley',
             strapline: 'Your Faithful And Friendly Financial Partner'
         },
-        locations: [{
-            name: 'Balance',
-            description: 'Check the balance of your account',
-        },{
-            name: 'Withdraw',
-            description: 'Withdraw money from your account',
-        },{
-            name: 'Deposit',
-            description: 'Deposit money into your account',
-        },{
-            name: 'ATM Locations',
-            description: 'Search for nearby ATMs',
-            }]
+        sidebar: "Looking for a bank? Bank Of Godley helps you find the closest bank where you can deposit and withdraw money and also check their balance.",
+        locations: responseBody
     });
+};
+
+/* GET 'home' page */
+const homelist = function(req, res){
+  res.render('locations-list', {
+      locations: [{
+          name: 'Balance',
+          description: 'Check the balance of your account',
+      },{
+          name: 'Withdraw',
+          description: 'Withdraw money from your account',
+      },{
+          name: 'Deposit',
+          description: 'Deposit money into your account',
+      },{
+          name: 'ATM Locations',
+          description: 'Search for nearby ATMs',
+      }]
+  });
 };
 
 /* GET 'Location info' page */
@@ -32,8 +41,7 @@ const addReview = function(req, res){
 };
 
 module.exports = {
-    homelist,
-    locationInfo,
-    addReview
+  homelist,
+  locationInfo,
+  addReview
 };
-
